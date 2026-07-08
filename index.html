@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Macelloni — Portfolio</title>
+    <link rel="icon" href="/assets/top_icon2.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/header_footer.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+
+  <canvas id="pixel-trail" aria-hidden="true"></canvas>
+
+    <!-- Header with three nav buttons -->
+  <header class="site-nav">
+    <nav aria-label="Primary">
+      <ul>
+        <li><span>Home</span></li>
+        <li><button type="button" onclick="location.href='about.html'">About</button></li>
+        <li><a href="https://www.instagram.com/lunatm___/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/luna-macelloni-b484aa251/" target="_blank" rel="noopener">LinkedIn</a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- Filter + sort controls -->
+  <div class="gallery-controls">
+    <div class="gallery-filters" role="group" aria-label="Filter by project type">
+      <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter-btn" data-filter="editorial" aria-pressed="false">Editorial</button>
+      <button type="button" class="filter-btn" data-filter="video" aria-pressed="false">Video</button>
+      <button type="button" class="filter-btn" data-filter="branding" aria-pressed="false">Branding</button>
+      <!-- <button type="button" class="filter-btn" data-filter="personal" aria-pressed="false">Personal</button> -->
+    </div>
+  </div>
+
+    <!-- Image grid, 2 columns, 10px gutter/margins -->
+  <!-- data-type: editorial | video | branding — data-date: YYYY-MM-DD, edit these to match each real project -->
+  <div>
+    <section class="gallery" aria-label="Photo grid">
+
+    <div class="gallery__column">
+      <a href="p-bao.html" class="gallery__item" data-type="branding video" data-date="2025-09-20" style="--tile-color: #ff178b;"><img src="assets/images/bao.png" alt="Bao">
+        <span class="gallery__label">
+          2026 <br>
+          BAO Music Festival
+        </span></a>
+
+        <a href="p-wtf.html" class="gallery__item" data-type="editorial video" data-date="2025-07-05" style="--tile-color: #27ff2b;"><img src="assets/images/p-wtf01.jpg" alt="What To Fix">
+        <span class="gallery__label">
+          2025 <br>
+          What To Fix
+        </span></a>
+
+        <a href="p-ultimacena.html" class="gallery__item" data-type="video" data-date="2025-11-02" style="--tile-color: #c42116;"><img src="assets/images/p-ultimacena01.jpg" alt="Gallery photo 3">
+        <span class="gallery__label">
+          2023 <br>
+          Ultima cena
+        </span></a>
+
+     </div>
+
+     <div class="gallery__column">
+        <a href="p-gamut.html" class="gallery__item" data-type="editorial" data-date="2026-01-10" style="--tile-color: #0a69e5;"><img src="assets/images/gamut.jpg" alt="Gamut">        
+        <span class="gallery__label">
+          2026 <br>
+          Gamut
+        </span></a>
+
+        <a href="p-pdp.html" class="gallery__item" data-type="branding video" data-date="2025-05-18" style="--tile-color: #e80d2a;"><img src="assets/images/p-pdp12.png" alt="Partito del Pomodoro">
+        <span class="gallery__label">
+          2023<br>
+          Partito del Pomodoro
+        </span></a>
+
+        <a href="p-surviving.html" class="gallery__item" data-type="video" data-date="2026-03-15" style="--tile-color: #ff5619;"><img src="assets/images/p-surviving01.png" alt="Surviving you always">        
+        <span class="gallery__label">
+          2025<br>
+          Surviving you, always
+        </span></a>
+      </div>
+
+    </section>
+  </div>
+
+    <!-- Full-width static title image -->
+  <div class="title-banner">
+    <img src="/assets/fixed-title2.png" alt="Luna's Portfolio">
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <span>Font in use:<br>
+      Aujournuit, Collletttivo<br>
+      Space Grotesk, Colophon Foundry<br><br><br>
+      Luna Macelloni @ 2026 
+    </span>
+  </footer>
+
+<script src="/js/index.js"></script>
+
+</body>
+</html>

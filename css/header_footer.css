@@ -1,0 +1,105 @@
+/* ---------- Shared UI ---------- */
+
+:root {
+  --ink: #161615;
+  --white: #f2f1e6;
+  --paper: #f4f2ef;
+
+  --accent: var(--ink); /* default, overridden per project page */
+
+  --ui-offset: 0.5rem;
+  --ui-side: 0.75rem;
+  --ui-gap: 1rem;
+
+  --ui-font-size: 0.7rem;
+  --ui-transition: 0.4s ease;
+}
+
+/* ---------- Fixed header ---------- */
+
+header.site-nav {
+  position: fixed;
+
+  top: var(--ui-offset);
+  left: var(--ui-side);
+  right: var(--ui-side);
+
+  z-index: 1000;
+}
+
+.site-nav ul {
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  gap: var(--ui-gap);
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.site-nav li:nth-child(3) {
+  margin-left: auto;
+}
+
+.site-nav button, .site-nav a, .site-nav span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--ui-font-size);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0;
+
+  color: var(--accent);
+  mix-blend-mode: normal;
+
+  background: none;
+  border: none;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  transition: opacity var(--ui-transition);
+}
+
+.site-nav span {
+  cursor: default;
+}
+
+/* once past the hero wrapper, revert to white regardless of page accent */
+.site-nav.is-scrolled button, .site-nav.is-scrolled a, .site-nav.is-scrolled span {
+  color: var(--ink);
+}
+
+/* ---------- Fixed footer ---------- */
+
+footer.site-footer {
+  position: static;
+
+  margin: var(--ui-offset);
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--ui-gap);
+
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--ui-font-size);
+  text-align: center;
+  /*text-transform: uppercase;*/
+  letter-spacing: 0;
+
+  color: var(--ink);
+}
+
+/* ---------- Hover ---------- */
+
+.site-nav button:hover,
+.site-nav a:hover {
+  opacity: 0.1;
+}

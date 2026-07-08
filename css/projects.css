@@ -1,0 +1,500 @@
+/* ---------- Base ---------- */
+
+@font-face {
+  font-family: 'Aujournuit';
+  src: url('/assets/fonts/Aujournuit-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--ui-font-size);
+}
+
+/*wrapper copertina progetti*/
+
+.wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 100svh;
+
+    overflow: hidden;
+    background-color: var(--ink);
+}
+
+
+/* ---------- Fullscreen video ---------- */
+
+.wrapper .wrapper__poster { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100svh; 
+    object-fit: cover; 
+    z-index: 0; 
+    transition: opacity 0.6s; 
+} 
+
+.wrapper.is-loaded .wrapper__poster { 
+    opacity: 0; 
+}
+
+.wrapper iframe,
+.wrapper video {
+    position: absolute;
+    z-index: 1; 
+
+    top: 50%;
+    left: 50%;
+
+    width: 100vw;
+    height: 100vh;
+
+    min-width: 120vh;
+    min-height: 120vw;
+
+    transform: translate(-50%, -50%) scale(1.2);
+
+    border: 0;
+
+    object-fit: cover;
+
+    pointer-events: none;
+}
+
+.wrapper img {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+/* copertine non video */
+.wrapper__poster img{
+    object-fit: cover;
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    width: 100%;
+    height: 100%;
+}
+
+.info {
+    position: absolute;
+    left: 0;
+    bottom: var(--ui-side);
+    left: var(--ui-side);
+    z-index: 30;
+
+    font-size: var(--ui-font-size);
+    color: var(--accent);
+
+    text-align: left;
+    
+
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: default;
+}
+
+.info a{
+    color: var(--accent);
+    transition: opacity var(--ui-transition);
+    cursor: pointer;
+}
+
+/*titolo gen*/
+.title {
+    position: absolute;
+    left: var(--ui-side);
+    top:30%;
+    z-index: 10;
+    color: var(--accent);
+
+    font-size: 15rem;
+    text-align: left;
+    text-transform: uppercase;
+    line-height: 0.8em;
+    letter-spacing: -0.08em;
+    font-family: 'Aujournuit', serif;
+}
+
+
+/* ---------- Project content ---------- */
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 4%;
+
+    z-index: 10;
+    padding-top: 5rem;
+    padding-right: var(--ui-side);
+    padding-left: var(--ui-side);
+
+    position: relative;
+}
+
+.fade-zone {
+    position: absolute;
+    top: 70vh;     /* delay before fade-in — increase this for "way later" */
+    bottom: 40vh;  /* how early it fades out before the images run out */
+    left: 0;
+    width: 1px;
+
+    pointer-events: none;
+}
+
+/* Sticky text, mirrors #description's pattern */
+.content-description {
+    position: sticky;
+      top: 50%;           /* Anchors the top edge to the middle of the screen */
+  translate: 0 -50%;  /* Pulls it up by half its own height to perfectly center it */
+
+    width: 40%;
+
+    text-align: left;
+    font-size: 1.7em;
+
+    opacity: 0;
+    will-change: opacity;
+
+    transition: opacity 0.5s ease;
+}
+
+.content-description.is-visible {
+    opacity: 1;
+}
+
+.content-description.is-hidden {
+    opacity: 0;
+}
+
+/* Stack of paragraphs — all share one grid cell so they can crossfade
+   in place instead of pushing layout around */
+.content-description .desc-stack {
+    display: grid;
+}
+
+.content-description .desc-para {
+    grid-column: 1;
+    grid-row: 1;
+
+    margin: 0;
+
+    opacity: 0;
+    will-change: opacity;
+
+    transition: opacity 0.4s ease;
+}
+
+.content-description .desc-para.is-active {
+    opacity: 1;
+}
+
+.content-description ul{
+    display: flex;
+    position: relative;
+    z-index: 10;
+    align-items: center;
+    gap: var(--ui-gap);
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+    
+
+.content-description button {
+font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--ui-font-size);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0;
+
+  color: var(--ink);
+
+  background: none;
+  border: none;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  transition: opacity var(--ui-transition);
+}
+
+/* first button pinned left, second pushed to the far right */
+
+.content-description li:first-child {
+    margin-right: auto;
+}
+
+.content-description button:hover, .info a:hover, .content-description a:hover{
+    opacity: 0.5;
+}
+
+.content-description a {
+    color: black;
+     cursor: pointer;
+  transition: opacity var(--ui-transition);
+}
+
+/* Images stack vertically, taller than viewport so text has room to stick */
+.content-images {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ui-gap);
+
+    width: 56%;
+}
+
+.content-images img {
+    display: block;
+    width: 80%;
+    height: auto;
+    align-self: center;
+}
+.content-images .image-pair {
+    display: flex;
+    gap: 10px;
+    width: 80%;
+    align-self: center;
+}
+
+.content-images .image-pair img, .content-images .image-pair video{
+    flex: 1 1 0;
+    width: 0; /* let flex-basis do the sizing, ignore intrinsic width */
+    min-width: 0;
+}
+
+.content-images video {
+    display: block;
+    width: 80%;
+    height: auto;
+    align-self: center;
+}
+
+/* ---------- Custom triangle cursor ---------- */
+
+.wrapper {
+    cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+
+    width: 0;
+    height: 0;
+
+    border-top: 3rem solid transparent;
+    border-bottom: 3rem solid transparent;
+    border-left: 5.5rem solid var(--accent);
+
+    pointer-events: none;
+
+    opacity: 0;
+    transform: translate(-9999px, -9999px);
+
+    will-change: transform;
+}
+
+.custom-cursor.is-visible {
+    opacity: 1;
+}
+
+/* Stack instead of side-by-side on narrow screens */
+@media screen and (max-width: 700px) {
+    .content {
+        flex-direction: column;
+    }
+
+    #content-description,
+    .content-images {
+        position: static;
+        width: 100%;
+    }
+
+    :root {
+        --ui-side: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+     .title {
+
+        font-size: 10rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    /* ---------- Hero ---------- */
+
+    :root {
+        --ui-side: 0.9rem;
+    }
+
+    .wrapper {
+        height: 100svh;
+    }
+
+    .wrapper iframe {
+        top: 50%;
+
+        width: 220vw;
+        height: 123.75vw;
+
+        min-width: 100%;
+        min-height: 100%;
+
+        transform: translate(-50%, -50%) scale(1.3);
+
+    }
+
+    .wrapper img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    }
+
+    .wrapper .wrapper__poster {
+        height: 100svh;
+    }
+
+    .wrapper .wrapper__poster {
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100svh;
+
+    }
+
+    /* ---------- Overlay text ---------- */
+
+    .title {
+        left: var(--ui-side);
+        right: var(--ui-side);
+        bottom: 6rem;
+
+        width: auto;
+
+        font-size: clamp(4rem, 18vw, 8rem);
+        line-height: 0.85;
+        letter-spacing: -0.05em;
+
+        z-index: 20;
+    }
+
+    .info {
+        left: var(--ui-side);
+        right: var(--ui-side);
+        bottom: 2rem;
+        max-width: 90%;
+        line-height: 1.4;
+    }
+
+    /* ---------- Main content ---------- */
+
+    .content {
+        flex-direction: column;
+
+        gap: 4rem;
+
+        padding-top: 4rem;
+        padding-right: var(--ui-side);
+        padding-left: var(--ui-side);
+    }
+
+.content-description {
+    position: relative;
+    top: auto;
+    translate: none;
+
+    width: 100%;
+
+    font-size: 1.05rem;
+    line-height: 1.4;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    transition: none;
+}
+
+.content-description p {
+    width: 90%;
+}
+
+.content-description .desc-stack {
+    display: block;
+}
+
+.content-description .desc-para {
+    margin: 0 0 1.2em;
+
+    opacity: 1 !important;
+    transition: none;
+}
+
+.content-description .desc-para:last-child {
+    margin-bottom: 0;
+}
+
+    .content-images {
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .content-images img {
+        width: 80%;
+    }
+
+    .content-images video {
+        width: 80%;
+    }
+
+    /* ---------- Fade zone ---------- */
+
+    .fade-zone {
+        display: none;
+    }
+
+    /* ---------- Buttons ---------- */
+
+    .content-description ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    /* ---------- Cursor ---------- */
+
+    .custom-cursor {
+        display: none;
+    }
+
+    .wrapper {
+        cursor: auto;
+    }
+    
+}
